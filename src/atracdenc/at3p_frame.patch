@@ -1,0 +1,24 @@
+atracdenc local patch (Rockman DASH PSP English project, Session 2f): lets the ATRAC3plus encoder use the
+frame size given in the AT3P_FRAME environment variable (the Japanese files use 744-byte frames) instead of the
+hard-coded 2048. Applies to https://github.com/dcherednik/atracdenc at commit cb170709.
+This patch modifies atracdenc and is licensed like it: GNU LGPL 2.1 or later (see atracdenc's LICENSE).
+
+--- /tmp/at3p.orig	2026-09-29 21:50:41.551001338 +0000
++++ src/atrac/at3p/at3p.cpp	2026-09-29 21:50:41.552001338 +0000
+@@ -28,6 +28,7 @@
+ 
+ #include <cassert>
+ #include <vector>
++#include <cstdlib>
+ #include <unordered_map>
+ 
+ using std::vector;
+@@ -37,7 +38,7 @@
+ class TAt3PEnc::TImpl {
+ public:
+     TImpl(ICompressedOutput* out, int channels, TSettings settings)
+-        : BitStream(out, 2048)
++        : BitStream(out, getenv("AT3P_FRAME") ? (uint16_t)atoi(getenv("AT3P_FRAME")) : 2048)
+         , ChannelCtx(channels)
+         , GhaProcessor(MakeGhaProcessor0(channels == 2, settings.UseGha & TSettings::GHA_WIDEBAND, settings.WidebandRefineMode))
+         , Settings(settings)

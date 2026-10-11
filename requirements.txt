@@ -1,0 +1,5 @@
+pycdlib>=1.14        # reading the PS1/PSP disc images
+Pillow>=9            # every build: the PSP menu overlay (tools/build_xmb.py) and the save picture (tools/build_savepic.py); PNG bytes depend on the version
+numpy>=1.22          # English audio steps: decoding the PS1 audio (tools/voice/xa.py), resampling, sound banks
+pyeboot>=0.2.3       # decrypting your own EBOOT.BIN when the base image is the PSN release (GPL-3; not needed with a UMD image)
+capstone>=5.0        # the check that the dropped Japanese voice files are unreachable (tools/checks/jp_audio_audit.py; English audio builds)

@@ -1,0 +1,6 @@
+# Line endings: text files are stored with LF; Windows-only scripts are checked out with CRLF, shell scripts always LF.
+* text=auto
+*.sh text eol=lf
+*.ps1 text eol=crlf
+# third-party source exactly as upstream
+src/** -text

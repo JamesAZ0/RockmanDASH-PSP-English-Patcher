@@ -1,0 +1,7 @@
+{
+ "_comment": "PARAM.SFO values changed for the PSP menu (XMB). Project decision 2026-09-30: TITLE = the romanised Japanese title. DISC_ID and everything else unchanged (saves stay compatible). tools/build_sfo.py. 2026-10-01 (project decision): --psp-menu=localized uses 'localized' (TITLE = Mega Man Legends, the PS1 game's name); --psp-menu=original (default) uses the top-level values.",
+ "TITLE": "Rockman DASH: Hagane no Boukenshin",
+ "localized": {
+  "TITLE": "Mega Man Legends"
+ }
+}

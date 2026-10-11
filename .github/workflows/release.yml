@@ -1,0 +1,95 @@
+# Builds the packaged patcher on GitHub's own machines (runners) for each platform and, on a version tag (v*),
+# publishes the downloads as a release. Per platform: compile atracdenc from src/atracdenc into bin/<platform>/,
+# run PyInstaller (packaging/patcher.spec), and pack the result into an archive that keeps the program's permissions.
+# The same steps as packaging/build_release.sh (macOS, Linux) and packaging/build_release.ps1 (Windows), which were
+# run by hand on macOS (Apple Silicon), Windows (x64) and Linux (aarch64). This workflow itself has not been run yet.
+# No game data is involved: the repository contains none (.gitignore).
+# Run it without publishing: Actions tab > release > Run workflow; the downloads appear as artifacts of that run.
+# Runner labels and action versions checked 2026-10-11 against GitHub's runner list:
+#   linux:   ubuntu-22.04 (x64) and ubuntu-22.04-arm (arm64; free for public repositories). The oldest supported
+#            Ubuntu, so the program also runs on older Linux systems (it needs the C library of the machine it was built on or newer).
+#   macOS:   macos-15 (Apple Silicon) and macos-15-intel (Intel). libsndfile comes from Homebrew and is bundled.
+#   Windows: windows-2022 (x64). Its Visual Studio 2022 includes the C++ ATL component atracdenc needs (atlbase.h);
+#            windows-latest moved to Visual Studio 2026 in June 2026, whose component list was not checked.
+name: release
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  patcher:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { os: ubuntu-22.04,     tag: linux-x86_64 }
+          - { os: ubuntu-22.04-arm, tag: linux-aarch64 }
+          - { os: macos-15,         tag: macos-arm64 }
+          - { os: macos-15-intel,   tag: macos-x86_64 }
+          - { os: windows-2022,     tag: windows-x86_64 }
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'          # 3.10 to 3.14 work; pyeboot has no 3.15 packages yet (docs/BUILD.md section 1)
+      - name: Python packages
+        run: python -m pip install -r requirements.txt "pyinstaller>=6,<7"   # the major version the patcher was tested with
+      - name: libsndfile (Linux)
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y libsndfile1-dev
+      - name: libsndfile (macOS)
+        if: runner.os == 'macOS'
+        run: brew install libsndfile
+      - name: Tk present
+        run: python -c "import tkinter; print('Tk', tkinter.TkVersion)"
+      - name: Compile atracdenc
+        shell: bash
+        run: |
+          if [ "$RUNNER_OS" = macOS ]; then export ATRACDENC_CMAKE_ARGS="-DCMAKE_PREFIX_PATH=$(brew --prefix)"; fi
+          python -c "import sys; sys.path.insert(0, 'tools'); import exttools; print(exttools.platform_tag(), exttools.build_atracdenc())"
+      - name: Package
+        run: python -m PyInstaller --noconfirm packaging/patcher.spec
+      - name: Archive the download
+        shell: bash
+        run: |
+          name="RockmanDASH-PSP-English-Patcher-${{ github.ref_name }}-${{ matrix.tag }}"
+          mkdir upload
+          cd dist
+          case "$RUNNER_OS" in
+            Windows) 7z a "../upload/$name.zip" RockmanDASH-PSP-English-Patcher* ;;
+            macOS)   ditto -c -k --keepParent RockmanDASH-PSP-English-Patcher* "../upload/$name.zip" ;;
+            Linux)   tar czf "../upload/$name.tar.gz" RockmanDASH-PSP-English-Patcher* ;;
+          esac
+          ls -l ../upload
+      - uses: actions/upload-artifact@v7
+        with:
+          name: ${{ matrix.tag }}
+          path: upload/*
+          if-no-files-found: error
+  release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: patcher
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/download-artifact@v8
+        with:
+          merge-multiple: true
+      - name: Publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cat > notes.md <<'NOTES'
+          Graphical patcher for Windows, macOS and Linux. No game data is included: you need your own copies of
+          Mega Man Legends (PS1, USA) and Rockman DASH (PSP, Japan). Do not share the ISO you build.
+
+          The patcher downloads are offered under GPL-3.0-or-later, because they contain pyeboot. Their source is this
+          repository at this tag. They also contain atracdenc (LGPL-2.1-or-later) with two small changes, compiled from
+          `src/atracdenc`. The programs are not signed: Windows and macOS may warn when they are first opened.
+
+          See README.md and THIRD_PARTY.md.
+          NOTES
+          sed -i 's/^          //' notes.md
+          gh release create "${{ github.ref_name }}" RockmanDASH-PSP-English-Patcher-* --repo "${{ github.repository }}" --title "${{ github.ref_name }}" --notes-file notes.md

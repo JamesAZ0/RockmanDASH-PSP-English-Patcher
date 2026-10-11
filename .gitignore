@@ -1,0 +1,20 @@
+# game data and anything made from it: never committed (THIRD_PARTY.md)
+originalDiskImages/
+decrypted_eboot/
+extracted/
+build/
+logs/
+savestates/
+widehudfix_savestates/
+RockmanDASH_work/
+*.iso
+*.ppst
+# compiled programs: made by the build or the release workflow
+bin/
+dist/
+# local
+__pycache__/
+*.pyc
+.DS_Store
+.vscode/
+.idea/

@@ -1,0 +1,111 @@
+{
+ "_doc": "EBOOT system-message overrides for the PSP options screen (project decision 2026-09-29, no R* marker). Entry numbers are PSP table slots. 'ps1': use that PS1 entry verbatim. 'lines': help-box text, built on this slot's Japanese string (its WIN/ops kept, one PAD 6 per line). 'layout_runs': keep every op of the Japanese string, replace its text runs in order ('{4F}' = 12-px space, as the Japanese full-width space). Terminology (project decision): analog pad = 'Analog Stick', D-pad = 'Directional button'. '{COL n}' (layout_runs only) = pad so the next text starts n px from the row start.",
+ "entries": {
+  "38": {
+   "what": "options screen labels (PSP layout: Turn / Free Look / Camera / Map / Lock-On / Screen). Columns aligned like the Japanese: labels at 24 px, first choice at 105, second at 162 ({COL n} = PAD to n px). Toggles say 'D-Pad' (project decision 2026-09-29); help lines keep 'Directional button'.",
+   "layout_runs": [
+    "{4F}Turn{COL 105}",
+    "D-Pad{COL 162}",
+    "L/R",
+    "{4F}Free Look{COL 105}",
+    "Normal{COL 162}",
+    "Reverse",
+    "{4F}Camera{COL 105}",
+    "D-Pad{COL 162}",
+    "Analog Stick",
+    "{4F}Map{COL 105}",
+    "On{COL 162}",
+    "Off",
+    "{4F}Lock-On{COL 105}",
+    "Manual{COL 162}",
+    "Auto",
+    "{4F}Screen{COL 105}",
+    "Wide{COL 162}",
+    "Original"
+   ]
+  },
+  "41": {
+   "what": "Free Look Reverse, Analog Stick",
+   "lines": [
+    "Down on Analog Stick moves",
+    "viewpoint up."
+   ]
+  },
+  "42": {
+   "what": "Free Look Normal, Analog Stick",
+   "lines": [
+    "Down on Analog Stick moves",
+    "viewpoint down."
+   ]
+  },
+  "43": {
+   "what": "Camera: Analog Stick",
+   "lines": [
+    "Camera: Analog Stick",
+    "Move: Directional button"
+   ]
+  },
+  "44": {
+   "what": "Camera: Directional button",
+   "lines": [
+    "Camera: Directional button",
+    "Move: Analog Stick"
+   ]
+  },
+  "47": {
+   "what": "Lock-On: Manual",
+   "lines": [
+    "Lock-On engaged with L+R."
+   ]
+  },
+  "48": {
+   "what": "Lock-On: Auto",
+   "lines": [
+    "Lock-On engaged automatically."
+   ]
+  },
+  "49": {
+   "what": "Screen: Original",
+   "lines": [
+    "Same aspect ratio as the",
+    "PlayStation version."
+   ]
+  },
+  "242": {
+   "what": "Screen: Wide",
+   "lines": [
+    "The game fills the entire screen."
+   ]
+  },
+  "243": {
+   "what": "Turn L/R, Analog Stick slides",
+   "lines": [
+    "Turn: L/R buttons",
+    "Slide: Analog Stick"
+   ]
+  },
+  "244": {
+   "what": "Turn Analog Stick, L/R slides",
+   "lines": [
+    "Turn: Analog Stick",
+    "Slide: L/R buttons"
+   ]
+  },
+  "245": {
+   "what": "Free Look Reverse, Directional button",
+   "ps1": 41
+  },
+  "246": {
+   "what": "Free Look Normal, Directional button",
+   "ps1": 42
+  },
+  "247": {
+   "what": "save screen: triangle button deletes save data (project decision 2026-09-29, no R*). Formatting (approved): box widened 15 -> 18 columns and moved left 18 px to stay centred (Japanese WIN 4800de000f01).",
+   "window": "3600de001201",
+   "layout_runs": [
+    "{FE}",
+    " button: Delete save data"
+   ]
+  }
+ }
+}

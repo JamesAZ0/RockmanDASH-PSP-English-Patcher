@@ -1,0 +1,133 @@
+{
+ "_comment": "PS1 (USA) textures that replace PSP (JP) ones: same size/format, text-bearing, same layout. Reviewed, project decision 2026-09-29 (maps and opening pages added the same day). clut=true also copies the PS1 palettes (header 0x100-0x800). See logs/texture_compare.md and build/analysis/tex_compare/review/ for everything that differs.",
+ "swaps": [
+  {
+   "psp": "..\\BG\\CHAR\\SUB02.TIM",
+   "ps1": "..\\BG\\CHAR\\SUB02U.TIM",
+   "clut": true,
+   "why": "Weapon-screen labels (Mega Buster, R-ARM WEAPONS, ON HAND, ...). PS1 palette 4 colours the English labels; with the PSP palette 4 they would be green."
+  },
+  {
+   "psp": "..\\SCR\\ST08\\intvh20.TIM",
+   "ps1": "..\\SCR\\ST08\\intvh20.TIM",
+   "clut": false,
+   "why": "TV-station monitors: 'KVV' -> 'KTV' (Kattelox TV, as in the English script) and the on-screen phone number.",
+   "legends": true
+  },
+  {
+   "psp": "..\\SCR\\ST01\\OPMOJI1.TIM",
+   "ps1": "..\\SCR\\ST01\\OPENG0.TIM",
+   "clut": false,
+   "why": "Opening prologue page 1 (PS1 English text, renamed on the US disc). PSP palette kept: the English text uses indices 10-15, which the PSP palette also colours as the pale text gradient."
+  },
+  {
+   "psp": "..\\SCR\\ST01\\OPMOJI2.TIM",
+   "ps1": "..\\SCR\\ST01\\OPENG1.TIM",
+   "clut": false,
+   "why": "Opening prologue page 2 (PS1 English text, renamed on the US disc). PSP palette kept: the English text uses indices 10-15, which the PSP palette also colours as the pale text gradient."
+  },
+  {
+   "psp": "..\\SCR\\ST01\\OPMOJI3.TIM",
+   "ps1": "..\\SCR\\ST01\\OPENG2.TIM",
+   "clut": false,
+   "why": "Opening prologue page 3 (PS1 English text, renamed on the US disc). PSP palette kept: the English text uses indices 10-15, which the PSP palette also colours as the pale text gradient."
+  },
+  {
+   "psp": "..\\SCR\\ST01\\OPMOJI4.TIM",
+   "ps1": "..\\SCR\\ST01\\OPENG3.TIM",
+   "clut": false,
+   "why": "Opening prologue page 4 (PS1 English text, renamed on the US disc). PSP palette kept: the English text uses indices 10-15, which the PSP palette also colours as the pale text gradient."
+  },
+  {
+   "psp": "..\\BG\\CHAR\\MAP_A1.TIM",
+   "ps1": "..\\BG\\CHAR\\MAP_A1E.TIM",
+   "clut": false,
+   "why": "Island map with English place labels (identical palettes and layout)."
+  },
+  {
+   "psp": "..\\BG\\CHAR\\MAP_A2.TIM",
+   "ps1": "..\\BG\\CHAR\\MAP_A2E.TIM",
+   "clut": false,
+   "why": "Island map with English place labels (identical palettes and layout)."
+  },
+  {
+   "psp": "..\\BG\\CHAR\\MAP_B1.TIM",
+   "ps1": "..\\BG\\CHAR\\MAP_B1E.TIM",
+   "clut": false,
+   "why": "Island map with English place labels (identical palettes and layout)."
+  },
+  {
+   "psp": "..\\BG\\CHAR\\MAP_B2.TIM",
+   "ps1": "..\\BG\\CHAR\\MAP_B2E.TIM",
+   "clut": false,
+   "why": "Island map with English place labels (identical palettes and layout)."
+  },
+  {
+   "psp": "..\\BG\\CHAR\\MAP_B3.TIM",
+   "ps1": "..\\BG\\CHAR\\MAP_B3E.TIM",
+   "clut": false,
+   "why": "Island map with English place labels (identical palettes and layout)."
+  },
+  {
+   "psp": "..\\BG\\CHAR\\GAUGE01.TIM",
+   "ps1": "..\\BG\\CHAR\\GAUGE01u.TIM",
+   "clut": true,
+   "why": "MISSION START / MISSION COMPLETE banner (approved 2026-09-29, test31). Pixels differ only in rows 208-247 (the banner); PS1 palette 6 (the banner gradient; the only palette that differs) comes with it. The banner's sprite lists are replaced with the PS1 ones in tools/build_sysmsg.py (the English words are laid out differently)."
+  },
+  {
+   "psp": "..\\SCR\\st08\\st7_410.TIM",
+   "ps1": "..\\SCR\\st08\\st7_410.TIM",
+   "clut": "auto",
+   "why": "TV-station building signs (exterior): the PSP's 'VAC' logo -> the US PS1's logo, to go with the KTV monitors inside (intvh20). Project decision 2026-10-01.",
+   "legends": true
+  },
+  {
+   "name": "SCKO00.TIM",
+   "clut": "auto",
+   "legends": true,
+   "why": "Vending machine: the drink can -> the US bottle (machine and poster). Legends only (project decision 2026-10-01)."
+  },
+  {
+   "name": "GAITOU.TIM",
+   "clut": "auto",
+   "legends": true,
+   "why": "Vending machine (street version): can -> bottle, as SCKO00. Legends only (project decision 2026-10-01)."
+  },
+  {
+   "name": "EM6400.TIM",
+   "clut": "auto",
+   "legends": true,
+   "why": "TV reporter: the US adds an emblem. Legends only (project decision 2026-10-01)."
+  },
+  {
+   "name": "INLIV00.TIM",
+   "clut": "auto",
+   "legends": true,
+   "why": "Room interior: US props/pictures. Legends only (project decision 2026-10-01)."
+  },
+  {
+   "name": "EM0000.TIM",
+   "clut": "auto",
+   "legends": true,
+   "why": "Servbot faces and props: US artwork. Legends only (project decision 2026-10-01)."
+  },
+  {
+   "name": "TRUNK.TIM",
+   "clut": "auto",
+   "legends": true,
+   "why": "Servbot faces / Bonne emblem in the trunk scene: US artwork. Legends only (project decision 2026-10-01)."
+  },
+  {
+   "name": "KABUTO.TIM",
+   "clut": "auto",
+   "legends": true,
+   "why": "Comic book cover and props: US artwork. Legends only (project decision 2026-10-01)."
+  },
+  {
+   "name": "ST02BG02.TIM",
+   "clut": "auto",
+   "legends": true,
+   "why": "Flutter map: 'Kattelox Island' lettering. Legends only (project decision 2026-10-01)."
+  }
+ ]
+}

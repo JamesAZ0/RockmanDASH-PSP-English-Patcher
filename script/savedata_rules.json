@@ -1,0 +1,238 @@
+{
+ "_about": "English text for the PSP save/load screens (PARAM.SFO title/details and the Memory Stick errors), written into the EBOOT by tools/build_savetext.py. UTF-8. Save files stay compatible with the unmodified game: only display strings change; the save identity (game name ULJM05030, save name %04d, DATA.BIN, size, key) is untouched (asserted). Keyed by the pointer slot (va) that points at the Japanese string. source: ps1-save = PS1 save-screen/system strings (logs/system_strings_map.md), ps1-script = PS1 English script, approved = the project's wording, new = new translation (confirm).",
+ "approved": "Project decision 2026-10-01: save name 'Mega Man Legends' with the PS1 save image option (en_ps1_save; default on). Project decision 2026-09-30: English save text, title 'Rockman DASH', PS1 area names; overflow strings may go to the added data area. 2026-09-30 later: all proposed translations approved as written (no R* markers); 'Underground Ruins' shortened to 'Underground' so every string fits in place. 2026-09-30 later: the save title (slot 0x26335c, the savedata utility's game title) = 'Rockman DASH: Hagane no Boukenshin', the same as the PSP menu name; too long for its place, so it goes to the added data area.",
+ "strings": [
+  {
+   "slot": "0x263350",
+   "jp": "むずかしいモード",
+   "en": "Hard Mode",
+   "source": "approved translation (project decision 2026-09-30)"
+  },
+  {
+   "slot": "0x263354",
+   "jp": "かんたんモード",
+   "en": "Easy Mode",
+   "source": "approved translation (project decision 2026-09-30)"
+  },
+  {
+   "slot": "0x263358",
+   "jp": "プレイタイム",
+   "en": "Play Time",
+   "source": "approved translation (project decision 2026-09-30)"
+  },
+  {
+   "slot": "0x26335c",
+   "jp": "ロックマンDASH",
+   "en": "Rockman DASH: Hagane no Boukenshin",
+   "source": "approved (project decision 2026-09-30: same name as the PSP menu title, script/sfo_rules.json)",
+   "en_ps1_save": "Mega Man Legends",
+   "source_ps1_save": "Project decision 2026-10-01: with the PS1 save image (default; formerly --psp-save keeps the line above), the save name is the PS1 game name"
+  },
+  {
+   "slot": "0x263360",
+   "jp": "ゲームデータ",
+   "en": "Game Data",
+   "source": "approved translation (project decision 2026-09-30)"
+  },
+  {
+   "slot": "0x263364",
+   "jp": "ロックマン",
+   "en": "Rockman",
+   "source": "approved"
+  },
+  {
+   "slot": "0x26336c",
+   "jp": "ステージ０",
+   "en": "Stage 0",
+   "source": "approved translation (project decision 2026-09-30) - placeholder"
+  },
+  {
+   "slot": "0x263370",
+   "jp": "ステージ１",
+   "en": "Stage 1",
+   "source": "approved translation (project decision 2026-09-30) - placeholder"
+  },
+  {
+   "slot": "0x263374",
+   "jp": "ステージ２",
+   "en": "Stage 2",
+   "source": "approved translation (project decision 2026-09-30) - placeholder"
+  },
+  {
+   "slot": "0x263378",
+   "jp": "カードンの森",
+   "en": "Cardon Forest",
+   "source": "ps1-save"
+  },
+  {
+   "slot": "0x26337c",
+   "jp": "アップル商店街",
+   "en": "Apple Market",
+   "source": "ps1-script"
+  },
+  {
+   "slot": "0x263380",
+   "jp": "セントラルタウン",
+   "en": "Downtown",
+   "source": "ps1-save"
+  },
+  {
+   "slot": "0x263384",
+   "jp": "市庁舎前",
+   "en": "City Hall",
+   "source": "ps1-save"
+  },
+  {
+   "slot": "0x263388",
+   "jp": "ステージ７",
+   "en": "Stage 7",
+   "source": "approved translation (project decision 2026-09-30) - placeholder"
+  },
+  {
+   "slot": "0x26338c",
+   "jp": "レイクサイドパーク",
+   "en": "Uptown",
+   "source": "ps1-save"
+  },
+  {
+   "slot": "0x263390",
+   "jp": "地下遺跡",
+   "en": "Underground",
+   "source": "approved (the project owner: shortened from the PS1 script's \"underground ruins\" to fit in place)"
+  },
+  {
+   "slot": "0x263394",
+   "jp": "クローサーの森",
+   "en": "Clozer Woods",
+   "source": "ps1-script"
+  },
+  {
+   "slot": "0x263398",
+   "jp": "ジュウイン湖",
+   "en": "Lake Jyun",
+   "source": "ps1-script"
+  },
+  {
+   "slot": "0x26339c",
+   "jp": "カードンの森の南",
+   "en": "South Cardon Forest",
+   "source": "approved translation (project decision 2026-09-30)"
+  },
+  {
+   "slot": "0x2633a0",
+   "jp": "ボート小屋",
+   "en": "Boat House",
+   "source": "ps1-script"
+  },
+  {
+   "slot": "0x2633a4",
+   "jp": "カードンの森の遺跡",
+   "en": "Cardon Ruins",
+   "source": "ps1-save"
+  },
+  {
+   "slot": "0x2633a8",
+   "jp": "市庁舎エリア",
+   "en": "City Hall",
+   "source": "ps1-save"
+  },
+  {
+   "slot": "0x2633ac",
+   "jp": "ヤスの高原",
+   "en": "Yass Plains",
+   "source": "ps1-script"
+  },
+  {
+   "slot": "0x2633b4",
+   "jp": "メインゲート前",
+   "en": "Main Gate",
+   "source": "ps1-save"
+  },
+  {
+   "slot": "0x2633b8",
+   "jp": "クローサーの森の遺跡",
+   "en": "Clozer Woods Ruins",
+   "source": "ps1-script"
+  },
+  {
+   "slot": "0x2633bc",
+   "jp": "ジュウイン湖の遺跡",
+   "en": "Lake Jyun Ruins",
+   "source": "ps1-script"
+  },
+  {
+   "slot": "0x2633c0",
+   "jp": "ステージ１５",
+   "en": "Stage 15",
+   "source": "approved translation (project decision 2026-09-30) - placeholder"
+  },
+  {
+   "slot": "0x2633c4",
+   "jp": "ステージ１６",
+   "en": "Stage 16",
+   "source": "approved translation (project decision 2026-09-30) - placeholder"
+  },
+  {
+   "slot": "0x2633c8",
+   "jp": "ステージ１７",
+   "en": "Stage 17",
+   "source": "approved translation (project decision 2026-09-30) - placeholder"
+  },
+  {
+   "slot": "0x2633cc",
+   "jp": "ステージ１８",
+   "en": "Stage 18",
+   "source": "approved translation (project decision 2026-09-30) - placeholder"
+  },
+  {
+   "slot": "0x2633d0",
+   "jp": "旧市街地",
+   "en": "Old City",
+   "source": "ps1-save"
+  },
+  {
+   "slot": "0x2633d4",
+   "jp": "メインゲート内部",
+   "en": "Inside Main Gate",
+   "source": "approved translation (project decision 2026-09-30)"
+  },
+  {
+   "slot": "0x2633e0",
+   "jp": "地下都市",
+   "en": "Sub-City",
+   "source": "ps1-script"
+  },
+  {
+   "slot": "0x2633e4",
+   "jp": "ステージ１Ｅ",
+   "en": "Stage 1E",
+   "source": "approved translation (project decision 2026-09-30) - placeholder"
+  },
+  {
+   "slot": "0x2633ec",
+   "jp": "新規データ",
+   "en": "New Data",
+   "source": "approved translation (project decision 2026-09-30) - matches emptypic.png"
+  },
+  {
+   "slot": "0x250704",
+   "jp_start": "\"メモリースティック デュオ\"が挿されていません",
+   "en": "No Memory Stick Duo is inserted.\nTo save Rockman DASH game data, a Memory Stick Duo\nwith at least 360 KB of free space is required.",
+   "source": "approved translation (project decision 2026-09-30)"
+  },
+  {
+   "slot": "0x250708",
+   "jp_start": "\"メモリースティック デュオ\"の空き容量が不足しています",
+   "en": "There is not enough free space on the Memory Stick Duo.\nTo save Rockman DASH game data, a Memory Stick Duo\nwith at least 360 KB of free space is required.",
+   "source": "approved translation (project decision 2026-09-30)"
+  }
+ ],
+ "formats": [
+  {
+   "va": "0x23DE18",
+   "jp": "%s %d:%d:%d%d\n%s\n%s\n",
+   "en": "%s %d:%02d:%d%d\n%s\n%s\n",
+   "why": "Play time in the save details: minutes zero-padded (0:07:34 instead of the original's 0:7:34). Formatting change project decision 2026-09-30. The same sprintf (0x22899C) already handles %04d for the save name, so %02d is supported. In place: 25 bytes in the 26 before ULJM05030 (unchanged)."
+  }
+ ]
+}

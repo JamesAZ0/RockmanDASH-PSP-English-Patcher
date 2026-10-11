@@ -1,0 +1,63 @@
+{
+ "_about": "Rules for the PS1 English voice audio (Sessions 2e-2g). Scene ids are subtitle scene ids (set + scene).",
+ "keep_japanese_scenes": {},
+ "stream_overrides": {
+  "A15": {
+   "ps1_rank": 18,
+   "also_replace": [
+    "bsr2.at3"
+   ],
+   "why": "Lake boat repair. The US disc's stream clip 15 (the usual A n = s00 rank n) is the Japanese track (it matches the PSP's bsr.at3, correlation 0.99); the English dub is clip 18 (confirmed by ear). The PSP also has bsr2.at3, a variant of the same scene (shares about half its audio with bsr, no subtitle table); the US disc has only this one English version, so it goes into both bsr.at3 and bsr2.at3."
+  }
+ },
+ "code_voice": {
+  "_about": "Voice clips the game code starts directly (not the text): the City Hall news reports (Session 2n audit). --audio=en: the bank-6 path-array entries of these clips point at the PS1 English clips (PS1 voice bank 11, matched by content in script/subtitles.csv C scenes); the code's ids stay Japanese, so they still start the news subtitle scenes C00-C04, which carry English text (tools/build_subtitles.py). Project decision 2026-09-30 (English news audio; English news subtitles). Session 2n's first version repointed the ids in code instead (test47-49), which stopped the subtitles.",
+  "table": {
+   "va": "0x28D98C",
+   "entries": [
+    {
+     "index": 0,
+     "jp_id": "0x60012",
+     "jp": "xa18m06/rn00.at3",
+     "scene": "C01",
+     "en": "b11_c04_0"
+    },
+    {
+     "index": 1,
+     "jp_id": "0x60013",
+     "jp": "xa18m06/rn01.at3",
+     "scene": "C02",
+     "en": "b11_c05_0"
+    },
+    {
+     "index": 2,
+     "jp_id": "0x60015",
+     "jp": "xa18m06/rn03.at3",
+     "scene": "C04",
+     "en": "b11_c06_0"
+    },
+    {
+     "index": 3,
+     "jp_id": "0x60014",
+     "jp": "xa18m06/rn02.at3",
+     "scene": "C03",
+     "en": "b11_c07_0"
+    }
+   ]
+  },
+  "constant": {
+   "lui_va": "0xBD664",
+   "ori_va": "0xBD674",
+   "jp_id": "0x6002E",
+   "jp": "xa18m06/rm.at3",
+   "scene": "C00",
+   "en": "b11_c10_0"
+  }
+ },
+ "kept_japanese_audio": {
+  "_about": "Japanese audio kept on purpose in --audio=en (project decision 2026-09-30, after listening; logs/jp_audio_audit.md).",
+  "xa37s00/cd00long.at3": "PSP credits theme (long): no match on the PS1 disc; the project owner: 'too good to replace'.",
+  "xa37s00/cd00.at3": "PSP credits theme (short): same.",
+  "PSP_GAME/SND0.AT3": "PSP menu preview sound: PSP-only, no English equivalent."
+ }
+}

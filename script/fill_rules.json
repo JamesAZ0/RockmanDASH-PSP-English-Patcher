@@ -1,0 +1,232 @@
+{
+ "_about": "Rules for PSP MSG slots where the Japanese block has text but the same-file English PS1 block is empty. Project decision 2026-09-28. Marker 'R*' = needs review; it is inserted automatically at the start of the displayed text (right after the first DECOR op).",
+ "marker": "R*",
+ "copy": [
+  {
+   "target_msg": "st03_ff.msg",
+   "source": "ST03_00/mess/st03_00.msg",
+   "blocks": [
+    "33",
+    "35",
+    "36",
+    "37",
+    "39",
+    "3C",
+    "3E",
+    "3F",
+    "40",
+    "41",
+    "42",
+    "43",
+    "44",
+    "45",
+    "47",
+    "51",
+    "52",
+    "53",
+    "55",
+    "56",
+    "5C",
+    "5E",
+    "5F",
+    "60",
+    "61",
+    "62",
+    "63",
+    "64",
+    "67",
+    "68",
+    "69",
+    "6A",
+    "6B",
+    "6D",
+    "7E",
+    "83",
+    "8B",
+    "B1",
+    "B2",
+    "B3",
+    "B4",
+    "B5",
+    "B6",
+    "B7",
+    "B8",
+    "B9"
+   ],
+   "note": "Section A of logs/jp_only_review.md (opening scenes)"
+  },
+  {
+   "target_msg": "st03_00.msg",
+   "source": "ST03_03/mess/st03_ff.msg",
+   "blocks": [
+    "BA",
+    "BC",
+    "BD",
+    "BF",
+    "C0",
+    "C1",
+    "C2",
+    "C3",
+    "C4",
+    "C5",
+    "C6",
+    "C7",
+    "C8",
+    "C9",
+    "CA",
+    "CB",
+    "CC",
+    "CD",
+    "CE",
+    "CF",
+    "D0",
+    "D1"
+   ],
+   "note": "Section B of logs/jp_only_review.md (leaving the island)"
+  }
+ ],
+ "copy_marked": [
+  {
+   "target_msg": "st03_ff.msg",
+   "block": "54",
+   "source": "ST03_00/mess/st03_00.msg",
+   "source_block": "54",
+   "note": "Same-index English line repeats the 'N' gate line; JP says the gate is unlocked and needs a guard."
+  },
+  {
+   "target_msg": "ST13_00.MSG",
+   "block": "26",
+   "source": "ST13_00/MESS/ST13_00.MSG",
+   "source_block": "25",
+   "note": "English has this line one slot earlier (off by one)."
+  }
+ ],
+ "authored": [
+  {
+   "id": "save_delete_hint",
+   "category": "PSP-only UI",
+   "jp": "[△]ボタン：セーブデータさくじょ",
+   "translation": "[button icon]: Delete Save Data",
+   "note": "Kept the PSP button icon glyph {FE}; dropped the word 'Button' and the 9 alignment spaces to fit the 24-column window.",
+   "runs": {
+    "　　　　　　　　　": "",
+    "{FE}": null,
+    "ボタン：セーブデータさくじょ": ": Delete Save Data"
+   }
+  },
+  {
+   "id": "data_delete",
+   "category": "PSP-only UI",
+   "jp": "「さくじょ〜",
+   "translation": "\"Delete~ (Data, playful, beside his save/charge menu)",
+   "runs": {
+    "「さくじょ〜": "\"Delete~"
+   }
+  },
+  {
+   "id": "set_deleted",
+   "category": "PSP-only UI",
+   "jp": "「SETさくじょしました",
+   "translation": "\"SET deleted.",
+   "runs": {
+    "「SETさくじょしました": "\"SET deleted."
+   }
+  },
+  {
+   "id": "reporter_scoop",
+   "category": "No English source",
+   "jp": "「特ネタ用に??あるの？ だったら??してね",
+   "translation": "\"Got any tips for a story? Then tell me!",
+   "runs": {
+    "「{25F}ネタ{334}に{119}{350}あるの？\\n　だったら{16D}してね": "\"Got any tips\nfor a story?\nThen tell me!"
+   }
+  },
+  {
+   "id": "can_enter",
+   "category": "No English source",
+   "jp": "「もうはいれる",
+   "translation": "\"You can go in now.",
+   "runs": {
+    "「もうはいれる": "\"You can go in\nnow."
+   }
+  },
+  {
+   "id": "junk_lady_open_soon",
+   "category": "No English source",
+   "jp": "ジャンク屋のおばさん「もうすぐ店を開けるから またよっておくれよ",
+   "translation": "Junk shop lady: \"We open soon--come by again!",
+   "runs": {
+    "ジャンク{1CF}のおばさん\\n「もうすぐ{365}を{1DC}けるから\\n　またよっておくれよ": "Junk shop lady\n\"We open soon--\ncome by again!"
+   }
+  },
+  {
+   "id": "debug_bug_msg",
+   "category": "Debug",
+   "jp": "このメッセージがでたらバグです",
+   "translation": "This message appearing means a bug.",
+   "runs": {
+    "このメッセージがでたらバグです": "This message\nappearing means\na bug."
+   }
+  },
+  {
+   "id": "debug_113",
+   "category": "Debug",
+   "jp": "「このメッセージが出たらバグ 113が出ないとダメ",
+   "translation": "\"Bug if this appears. 113 must appear.",
+   "runs": {
+    "「このメッセージが{277}たらバグ\\n　113が{277}ないとダメ": "\"Bug if this\nappears. 113\nmust appear."
+   }
+  },
+  {
+   "id": "debug_underground_none",
+   "category": "Debug",
+   "jp": "「地下都市入口はない… 出たらバグ！！",
+   "translation": "\"No Underground City entry... Bug if shown!!",
+   "runs": {
+    "「{2BC}{1D6}{132}{24E}{2E4}{226}はない{108}\\n　{277}たらバグ！！": "\"Underground\nCity: no entry\nBug if shown!!"
+   }
+  },
+  {
+   "id": "debug_underground_008",
+   "category": "Debug",
+   "jp": "「地下都市入口は008へ… 出たらバグ！！",
+   "translation": "\"Underground City entry: 008... Bug if shown!!",
+   "runs": {
+    "「{2BC}{1D6}{132}{24E}{2E4}{226}は008へ{108}\\n　{277}たらバグ！！": "\"Underground\nCity entry: 008\nBug if shown!!"
+   }
+  },
+  {
+   "id": "debug_the_end",
+   "category": "Debug",
+   "jp": "おしまい！",
+   "translation": "The end! (5-column window)",
+   "runs": {
+    "おしまい！": "End"
+   }
+  },
+  {
+   "id": "debug_event_wip",
+   "category": "Debug",
+   "jp": "「イベント制作中！！ / 次のロムで会いましょう",
+   "translation": "\"Event under construction!! / See you in the next ROM!",
+   "runs": {
+    "「イベントせい{23C}{2BD}！！": "\"Event under\nconstruction!!",
+    "　{255}のロムで{1D9}いましょう": "See you in the\nnext ROM!"
+   }
+  }
+ ],
+ "ps1_layout": [
+  {
+   "id": "pause_menu_redraw",
+   "target_msg": "stff_fe.msg",
+   "block": "00",
+   "source": "PS1 ROCK_NEO.EXE system message 50 (= PSP EBOOT system message 50, the interactive pause menu)",
+   "why": "PSP-only static redraw of the pause menu (shown when backing out of a sub-screen). Uses the PS1 English labels and the PS1 box position/width so it matches the interactive menu exactly. Project decision 2026-09-29; replaces the earlier R* translation 'Items / KeyItem / Equip / Status / Options / Resume'. Layout-only change: WIN 700050000806 -> 580050000c06.",
+   "window": "580050000c06",
+   "runs": {
+    "{109}{2C6}{268}アイテム\\n": "{109}Normal Items\n",
+    "　キーアイテム\\n　パーツ{2A3}{2F3}\\n　ステータス\\n　オプション\\n　{11E}{341}": "{4F}Special Items\n{4F}Buster Parts\n{4F}Special Weapons\n{4F}Options\n{4F}Close"
+   }
+  }
+ ]
+}

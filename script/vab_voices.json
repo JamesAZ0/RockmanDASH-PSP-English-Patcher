@@ -1,0 +1,56 @@
+{
+ "_comment": "English voice samples inside SPU sound banks (VAB entries of container BINs), --audio=en only. tools/voice/build_vab.py. Every sample is the PS1 English VAG verbatim, with the PS1 English bank's tone record for it (the PS1 pitch/volume that sample was made for). Project decision 2026-09-30: the two in-game banks (same pitch on both games); the title bank first resampled to the PSP rate (test43-45), then (project decision, same day) verbatim at its PS1 44.1 kHz pitch instead, to be tested on the title screen.",
+ "banks": [
+  {
+   "bin": "DEMO_DAT",
+   "psp_entry": "..\\sound\\moto\\se\\vab\\e_title.vab",
+   "ps1_entry": "..\\sound\\moto\\se\\vab\\ee_title.vab",
+   "vags": [
+    9,
+    10,
+    11
+   ],
+   "what": "title screen / title-menu selection voices (program 2, keys 60-62)"
+  },
+  {
+   "bin": "BS16VAB1",
+   "psp_entry": "..\\sound\\moto\\se\\vab\\t_lb01b.vab",
+   "ps1_entry": "..\\sound\\moto\\se\\vab\\et_lb01b.vab",
+   "vags": [
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26
+   ],
+   "what": "in-game voice samples (program 1, keys 60-69)"
+  },
+  {
+   "bin": "ST1A_02B",
+   "psp_entry": "..\\sound\\moto\\se\\vab\\t_lb02b.vab",
+   "ps1_entry": "..\\sound\\moto\\se\\vab\\et_lb02b.vab",
+   "vags": [
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28
+   ],
+   "what": "in-game voice samples (program 1, keys 60-73)"
+  }
+ ]
+}

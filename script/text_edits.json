@@ -1,0 +1,70 @@
+{
+ "_about": "Formatting adjustments to PS1 English lines, each project decision (project rule: only PS1 text, formatting changes after approval). Applied by tools/build_text.py to the English tokens of the listed blocks (msg basename, case-insensitive + block hex). 'replace' swaps character runs ('{56}' = PS1 character code 0x56, for symbols such as the button icons); 'drop_page' removes the page (text up to and including its NEXT + CLEAR) that contains the given text. Every edit must match (asserted).",
+ "edits": [
+  {
+   "id": "memory-stick",
+   "approved": "Project decision 2026-09-30",
+   "why": "Data's save help talks about a PS1 Memory card and its blocks. On the PSP: 'Memory Stick', and the block-count page goes. Target text (project decision): \"If you want to save, come talk to me--you'll need a Memory Stick, too... If you get killed, you can restart from your previous save point by loading that game.\"",
+   "blocks": [
+    [
+     "st03_00.msg",
+     "E6"
+    ],
+    [
+     "st03_ff.msg",
+     "E6"
+    ]
+   ],
+   "replace": [
+    [
+     "Memory card, too...",
+     "Memory Stick, too..."
+    ]
+   ],
+   "drop_page": [
+    "One saved game"
+   ]
+  },
+  {
+   "id": "confirm-cancel-buttons",
+   "approved": "Project decision 2026-09-28 (button references follow the PSP control layout as the Japanese PSP script writes it); these blocks requested 2026-10-06",
+   "why": "On the PS1 (US) the cross button confirms and the triangle button cancels on the name-entry and donation screens; on the PSP the circle button confirms and the cross button cancels, and the Japanese PSP text of the same blocks says so. Only the two button icons change: cross -> circle (confirm), then triangle -> cross (cancel). Blocks: name entry at the TV station minigames (st08_03), name entry in st05, the donation amount in st06.",
+   "blocks": [
+    [
+     "st05_00.msg",
+     "02"
+    ],
+    [
+     "st05_fe.msg",
+     "02"
+    ],
+    [
+     "st06_01.msg",
+     "72"
+    ],
+    [
+     "st06_04.msg",
+     "72"
+    ],
+    [
+     "st08_03.msg",
+     "1C"
+    ],
+    [
+     "st08_03.msg",
+     "24"
+    ]
+   ],
+   "replace": [
+    [
+     "{56}",
+     "{54}"
+    ],
+    [
+     "{55}",
+     "{56}"
+    ]
+   ]
+  }
+ ]
+}

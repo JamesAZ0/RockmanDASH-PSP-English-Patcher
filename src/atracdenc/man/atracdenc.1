@@ -1,0 +1,122 @@
+.\" Define V font for inline verbatim, using C font in formats
+.\" that render this, and otherwise B font.
+.ie "\f[CB]x\f[]"x" \{\
+. ftr V B
+. ftr VI BI
+. ftr VB B
+. ftr VBI BI
+.\}
+.el \{\
+. ftr V CR
+. ftr VI CI
+. ftr VB CB
+. ftr VBI CBI
+.\}
+.TH "ATRACDENC" "1" "16 Jun 2025" "atracdenc 0.2.0" "User Manual"
+.hy
+.SH NAME
+.PP
+atracdenc - encode to or decode from ATRAC family formats
+.SH SYNOPSIS
+.PP
+atracdenc [options] {-e <codec> | \[en]encode=<codec> | -d |
+\[en]decode} -i <in> -o <out>
+.PP
+.SH DESCRIPTION
+.PP
+atracdenc is an audio converter that can encode into ATRAC1, ATRAC3
+or ATRAC3PLUS compatible format and decode from ATRAC1.
+.PP
+For ATRAC1 (also known as ATRAC SP on MiniDisk devices) AEA and RAW
+containers are supported. Only one bitrate (292 kbit/s) is specified.
+.PP
+For ATRAC3 (also known as ATRAC LP on MiniDisk devices) OMA, AT3(RIFF),
+RealMedia and RAW containers are supported. In the case of OMA and AT3 container, compatible bitrates are 66150 (LP4), 104738 and 132300 (LP2) bits/s.
+The RealMedia container supports 66150, 93713, 104738, 132300, 146081, 176400, 264600 and 352800 bits/s.
+.PP
+For ATRAC3PLUS OMA, AT3(RIFF) and RAW containers are supported with highest bitrate 352800 bits/s
+.SH OPTIONS
+.TP
+.B \-h
+Display help.
+.TP
+.B \-i
+Path to the input file. In case of encoding it should be WAV, AIFF or SND 44100 Khz 16 bit PCM file. \
+Use - to read from stdin.
+.TP
+.B \-o
+Path to the output file. The container format is chosen automatically according to the file extension unless --container is specified.
+.TP
+.B \--container <container>
+Explicitly select the output container. <container> must be one of aea, oma, riff, rm or raw.
+Valid combinations are ATRAC1: aea/raw; ATRAC3: oma/riff/rm/raw; ATRAC3PLUS: oma/riff/raw.
+.TP
+.B \-e <codec>
+Encode mode. <codec> is a codec name must be one of atrac1, atrac3, atrac3_lp4 or atarc3plus
+.TP
+.B \--encode=<codec>
+Alias for -e.
+.TP
+.B \-d
+Decode mode. Only ATRAC1 is supported.
+.TP
+.B \--decode
+Alias for -d.
+.TP
+.B \--bitrate
+Specify using bitrate (kbit/s). It make sense only for ATRAC3.
+.TP
+.SH ADVANCED OPTIONS
+.TP
+.B \--bfuidxconst
+Set constant amount of used BFU (ATRAC1, ATRAC3).
+.TP
+.B \--notransient[=mask] (ATRAC1)
+Disable transient detection and use an optional mask \
+to set bands with a forced short MDCT window.
+.TP
+.SH EXAMPLES
+.LP
+ATRAC1 compatible encoding
+.IP
+.B atracdenc \-e atrac1
+-i
+.I in.wav
+-o
+.I out.aea
+
+.LP
+ATRAC3 LP2 compatible encoding
+.IP
+.B atracdenc \-e atrac3
+-i
+.I in.wav
+-o
+.I out.oma
+
+.LP
+ATRAC3 LP4 compatible encoding (low quality)
+.IP
+.B atracdenc \-e atrac3_lp4
+-i
+.I in.wav
+-o
+.I out.oma
+
+.LP
+ATRAC3 + RealAudio container + max supported bitrate
+.IP
+.B atracdenc \-e atrac3 --bitrate=344
+-i
+.I in.wav
+-o
+.I out.rm
+
+.LP
+ATRAC3PLUS compatible encoding
+.IP
+.B atracdenc \-e atrac3plus
+-i
+.I in.wav
+-o
+.I out.oma

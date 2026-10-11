@@ -1,0 +1,3 @@
+-r ../requirements.txt
+zstandard>=0.20      # reading PPSSPP save states (savestate_check.py, verify_wide_hud.py)
+unicorn>=2.0         # research/verify_wide_hud.py (GPL-2.0; see THIRD_PARTY.md)
