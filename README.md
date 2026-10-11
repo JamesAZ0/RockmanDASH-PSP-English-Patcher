@@ -3,8 +3,7 @@
 An unofficial fan project that turns the Japanese PSP game **Rockman DASH: Hagane no Boukenshin** (ULJM05030) into an
 English game, using the script, voice acting and textures of the US PlayStation release, **Mega Man Legends**.
 
-The patcher works from **your own** copies of both games. This repository contains no game data, and the game you
-build must not be shared. The project is not affiliated with or endorsed by Capcom.
+The patcher works from **your own** copies of both games. This repository contains no game data. The project is not affiliated with or endorsed by Capcom.
 
 ## What the patcher does
 
@@ -27,8 +26,7 @@ builds a new PSP disc image in which:
   the game, see below).
 - The face-button icons in the text follow the PSP's layout (Circle to confirm, Cross to cancel).
 
-The game program is patched in place and every original file keeps its position on the disc. The save format is
-unchanged. Each build ends with a series of automatic checks; if one fails, the build stops and says why.
+The save format is unchanged and compatible with the original PSP release. Each build ends with a series of automatic checks; if one fails, the build stops and says why.
 
 ## What you need
 
@@ -56,7 +54,7 @@ Patching takes a few minutes. Your disc images are only read, never changed.
 | Option | Choices (default first) | What it does |
 |---|---|---|
 | Localization | Legends, Text and audio, Text only | **Text only**: English text and text-bearing textures, Japanese voices, the game keeps the name Rockman DASH. **Text and audio**: plus all English voices. **Legends**: plus the Mega Man Legends title screen, PSP menu name and icon, save name and picture, and the US signs and artwork. |
-| Paprika (the dog) | Fair game, Good dog | **Good dog** removes kicking the dog, as the US PS1 release did. |
+| Paprika | Fair game, Good dog | **Good dog** removes kicking the dog, as the US PS1 release did. |
 | Cutscene subtitles | On, Off | The PSP version's subtitles in voiced scenes. |
 | Subtitle language | English, Japanese | |
 | Subtitle background | On, Off | A dark band behind the English subtitles. |
