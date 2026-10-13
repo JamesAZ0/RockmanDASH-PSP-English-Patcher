@@ -470,6 +470,19 @@ rewrites these ops according to the audio mode; see §10.3 and §10.4.
 
 ---
 
+### 3.11 The name field (op `0xCC`)
+
+`0xCC` shows a name entered on a name-entry screen: the TV station minigames (`st08_02.msg` 0C, 0D, 0F, 10, 11;
+`st08_03.msg` 1C, 21, 24, 25) and the same kind of screens in `st05_00.msg` 02 and `st05_fe.msg` 02–05 (14 blocks).
+The PS1 writes it as `CC` followed by three `0x4F` cells. Every Japanese PSP block writes `CC`, a `0x0000` unit and
+three `0x4F` cells. Converted in the PS1 form (and with the cells turned into the English space `0x1A6`), the PSP
+showed a stray "0" after the name on the "Is the name … acceptable?" line and shifted the 2nd and 3rd rows of the
+high-score boards (seen in play, 2026-10-12). `msgtool.tokens_to_psp` now writes the PSP form (`NAME_FIELD`): the
+`0x0000` unit is added and the three cells stay `0x4F`. Whether the `0x0000` unit is an argument of `CC` or a
+cell of its own was not established; the build copies the Japanese layout exactly.
+**Confidence:** confirmed in play (test81, 2026-10-13: no stray character after the name, high-score rows aligned);
+layout identical to the Japanese blocks (checked byte for byte).
+
 ## 4. Text rendering and the font
 
 ### 4.1 Font storage

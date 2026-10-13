@@ -153,6 +153,12 @@ PS1_TO_PSP_CHAR.update({0x80: 0x10D, 0x81: 0x10E, 0x82: 0x10F, 0x83: 0x1A5})
 # the text engine builds menu cursors from 0x4F spaces + the hand glyph, and the key-item grid cursor moved too little
 # while 0x4F was 5 px (seen in play, 2026-09-29). Widths: tools/patch_eboot.py.
 PS1_TO_PSP_CHAR[0x4F] = 0x1A6
+# NAME_FIELD (op 0xCC) shows an entered name (TV station and other name-entry / high-score screens). The PS1 writes it as
+# CC + three 0x4F cells; every Japanese PSP block writes CC + a 0x0000 unit + three 0x4F cells (14 blocks, all alike).
+# tokens_to_psp writes the PSP form: the 0 unit is added and the three cells stay 0x4F (12 px), not the English space.
+# With the PS1 form the PSP showed a stray "0" after the name and shifted the following high-score rows
+# (seen in play, 2026-10-12). A formatting change, approved 2026-10-12; no text changes.
+NAME_FIELD = 0xCC
 # PSP control layout (project decision 2026-09-28; a formatting change, so it carries no "R*" review marker - see
 # build_text.py):
 # the PSP has no R2. The Japanese PSP script writes the R2 action as "L button + R button" using the
@@ -188,12 +194,26 @@ def tokens_to_psp(t):
     Ops get OP_SHIFT added; their arguments are copied, re-laid for B9/CE/E9, and padded to an even length."""
     t = psp_button_colors(t)
     out = bytearray()
-    for x in t:
+    name_cells = 0                                   # name field after a CC op still to write (see NAME_FIELD below)
+    skip = -1
+    for k, x in enumerate(t):
+        if k == skip:                                # the 0 unit after CC, already written
+            continue
+        if name_cells and x in (('c', 0x4F), ('raw', 0x4F)):
+            out += struct.pack('<H', 0x4F); name_cells -= 1; continue
+        name_cells = 0
         if x[0] == 'c':
             for _v in PS1_TO_PSP_SEQ.get(x[1], (PS1_TO_PSP_CHAR.get(x[1], x[1]),)):
                 out += struct.pack('<H', _v)
         elif x[0] == 'raw':
             out += struct.pack('<H', x[1])
+        elif x[1] == NAME_FIELD:
+            out += struct.pack('<H', x[1] + OP_SHIFT)
+            nxt = t[k + 1] if k + 1 < len(t) else None
+            out += struct.pack('<H', 0)              # the PSP's 0 unit (added for a PS1 block, kept for a Japanese one)
+            if nxt in (('c', 0), ('raw', 0)):
+                skip = k + 1
+            name_cells = 3
         else:
             # re-lay B9/CE/E9 only when the arguments still have the PS1 length (ops taken from a Japanese PSP block are
             # already in the PSP layout)
